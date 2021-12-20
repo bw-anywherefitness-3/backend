@@ -2,12 +2,17 @@ exports.seed = async function (knex) {
 
     await knex("users")
     .insert([
-      { name: "JohnDoe",
-       password: "1234",
-       email: "test@test.com",
-       role: "instructor" 
+      { name: "Hermione Granger",
+        password: "1234",
+        email: "test@test.com",
+        role: "instructor" 
+    },
+      { name: "Harry Potter",
+        password: "1234",
+        email: "new@test.com",
+        role: "client" 
     }
-    ])
+    ]),
   await knex("class")
     .insert({
       class_name: 'Spin Class',
