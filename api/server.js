@@ -13,11 +13,14 @@ async function insertUser(user) {
   return newUserObject // { user_id: 7, username: 'foo', password: 'xxxxxxx' }
 }
 
+const authRouter = require('./auth/auth-router');
+
 const server = express()
 server.use(express.json())
 server.use(helmet())
 server.use(cors())
 
+server.use("/api/auth", authRouter)
 server.get('/api/users', async (req, res) => {
   res.json(await getAllUsers())
 })
