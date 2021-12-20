@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const bcryptjs = require("bcryptjs");
 
-// const Users = require("../users/users-model");
+const Users = require("../users/user-model");
 const { buildToken } = require("./auth-helpers");
 
-// const { checkUsernameExists, validateRoleName } = require("./auth-middleware");
+ const { checkUsernameExists, validateRoleName } = require("./auth-middleware");
 
 router.post("/register", validateRoleName, (req, res, next) => {
 
