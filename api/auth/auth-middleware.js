@@ -1,5 +1,5 @@
 const { JWT_SECRET } = require("../secrets");
-// const { findBy } = require("../users/users-model");
+const { findBy } = require("../users/user-model");
 const jwt = require("jsonwebtoken");
 
 const restricted = (req, res, next) => {
