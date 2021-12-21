@@ -22,5 +22,14 @@ router.post('/', restricted, only("instructor"), (req, res, next) => {
     .then(newClass => {
         res.json(newClass)
     })
+    .catch(next)
 })
+router.put('/classes/:class_id', (req, res, next) => {
+    Class.update(req.params.class_id, req.body)
+    .then(updateClass => {
+        res.json(updateClass)
+    })
+    .catch(next)
+})
+    
 module.exports = router
