@@ -1,5 +1,4 @@
 const db = require('../data/db-config')
-const { findById } = require('../users/user-model')
 
 function getAll() {
     return db('class')

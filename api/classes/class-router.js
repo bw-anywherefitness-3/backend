@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const Class = require('./class-model')
 
+const { restricted, only } = require("../auth/auth-middleware")
+
 router.get('/', (req, res, next) => {
     Class.getAll()
     .then(classes => {
@@ -15,8 +17,10 @@ router.get('/:id', (req, res, next) => {
     })
     .catch(next)
 })
-router.post('/', (req, res, next) => {
+router.post('/', restricted, only("instructor"), (req, res, next) => {
     Class.add(req.body)
-    .then(newClass)
+    .then(newClass => {
+        res.json(newClass)
+    })
 })
 module.exports = router
