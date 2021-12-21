@@ -8,17 +8,10 @@ const { buildToken } = require("./auth-helpers");
 
 router.post("/register", validateRole, (req, res, next) => {
 
-<<<<<<< HEAD
-  const { first_name, last_name, password } = req.body;
-  const { role } = req;
-  const hash = bcryptjs.hashSync(password, 8);
-  Users.add({ first_name, last_name, password: hash, role })
-=======
   const { first_name, last_name, password, email } = req.body;
   const { role } = req;
   const hash = bcryptjs.hashSync(password, 8);
   Users.add({ first_name, last_name, password: hash, email, role })
->>>>>>> 981d514e977370ea39275c959a258ad9101a7f33
     .then((newUser) => {
       res.status(201).json(newUser);
     })
