@@ -18,9 +18,13 @@ const userRouter = require('./users/user-router')
 const authRouter = require('./auth/auth-router');
 
 const server = express()
+
+// server.use(express.static(path.join(__dirname, '../frontend/anytime-fitness/src')))
+
 server.use(express.json())
 server.use(helmet())
 server.use(cors())
+
 server.use('/api/classes', classesRouter)
 server.use('/api/users/', userRouter)
 
@@ -33,6 +37,11 @@ server.use("/api/auth", authRouter)
 // server.post('/api/users', async (req, res) => {
 //   res.status(201).json(await insertUser(req.body))
 // })
+
+server.get('/', (req, res) => {
+  res.json("server up")
+  // res.sendFile(path.join(__dirname, '../frontend/anytime-fitness/src', 'index.html'))
+})
 
 server.use((err, req, res, next) => { // eslint-disable-line
   res.status(err.status || 500).json({
