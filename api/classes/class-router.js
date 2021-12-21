@@ -8,5 +8,15 @@ router.get('/', (req, res, next) => {
     })
     .catch(next)
 })
-
+router.get('/:id', (req, res, next) => {
+    Class.getById(req.params.id)
+    .then(classes => {
+        res.json(classes)
+    })
+    .catch(next)
+})
+router.post('/', (req, res, next) => {
+    Class.add(req.body)
+    .then(newClass)
+})
 module.exports = router

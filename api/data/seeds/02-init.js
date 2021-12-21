@@ -2,12 +2,14 @@ exports.seed = async function (knex) {
 
     await knex("users")
     .insert([
-      { name: "Hermione Granger",
+      { first_name: "Hermione",
+        last_name: "Granger",
         password: "1234",
         email: "test@test.com",
         role: "instructor" 
     },
-      { name: "Harry Potter",
+      { first_name: "Harry",
+        last_name: "Potter",
         password: "1234",
         email: "new@test.com",
         role: "client" 
@@ -16,8 +18,9 @@ exports.seed = async function (knex) {
   await knex("class")
     .insert({
       class_name: 'Spin Class',
-      class_type: 'cycling', 
-      class_date: "2021-12-20 10:23:54+07",
+      type: 'cycling', 
+      date: "12/21/2021",
+      time: '3:00 pm',
       duration: "60 min",
       intensity_level: "easy",
       location: 'the gym',

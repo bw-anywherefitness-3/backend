@@ -4,7 +4,8 @@ exports.up = async (knex) => {
   await knex.schema
       .createTable('users', (users) => {
       users.increments('user_id')
-      users.string('name', 200).notNullable()
+      users.string('first_name', 200).notNullable()
+      users.string('last_name', 200).notNullable()
       users.string('password', 200).notNullable()
       users.string('email', 200).notNullable().unique()
       users.string('role', 200).notNullable()
@@ -14,8 +15,9 @@ exports.up = async (knex) => {
     .createTable('class', (classes) => {
       classes.increments('class_id')
       classes.string('class_name', 200).notNullable()
-      classes.string('class_type', 200).notNullable()
-      classes.datetime('class_date', {precision: 6 }).notNullable()
+      classes.string('type', 200).notNullable()
+      classes.string('date', 100).notNullable()
+      classes.string('time',100).notNullable()
       classes.string('duration', 200).notNullable()
       classes.string('intensity_level', 200).notNullable()
       classes.string('location', 200).notNullable()
