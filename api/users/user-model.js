@@ -15,10 +15,10 @@ function findById(id) {
         .first()
 }
 
-function add(user){
-    return db('users')
-    .insert(user)
-    .then(([id]) => findById(id))
+async function add(user){
+    const [newUser] = await db('users')
+                        .insert(user, ['name','password','email', 'role'])
+                        return newUser
 }
 module.exports = {
     getAll,
