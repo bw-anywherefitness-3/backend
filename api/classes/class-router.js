@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const res = require('express/lib/response')
+
 const Class = require('./class-model')
 
 router.get('/', (req, res, next) => {
