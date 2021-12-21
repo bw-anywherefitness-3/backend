@@ -4,7 +4,7 @@ const bcryptjs = require("bcryptjs");
 const Users = require("../users/user-model");
 const { buildToken } = require("./auth-helpers");
 
- const { checkUsernameExists, validateRole } = require("./auth-middleware");
+ const { validateRole } = require("./auth-middleware");
 
 router.post("/register", validateRole, (req, res, next) => {
 
@@ -18,7 +18,7 @@ router.post("/register", validateRole, (req, res, next) => {
     .catch(next);
 });
 
-router.post("/login", checkUsernameExists, (req, res, next) => {
+router.post("/login", (req, res, next) => {
 
     let { email, password } = req.body;
 

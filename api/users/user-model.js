@@ -5,7 +5,7 @@ function getAll() {
 }
 function findBy(filter) {
     return db('users')
-    .select('user_id','name', 'password', 'email', 'role')
+    .select('user_id','first_name', 'last_name', 'password', 'email', 'role')
     .where(filter)
 
 }
