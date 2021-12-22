@@ -37,4 +37,22 @@ router.post("/login", (req, res, next) => {
       .catch(next);
 });
 
+router.get('/logout', async (req, res, next) => {
+  try {
+    if (req.token) {
+      req.token.destroy((err) => {
+        if (err) {
+          res.json('Could not log you out!')
+        } else {
+          res.json('Logged out!')
+        }
+      })
+    } else {
+      res.json('No session!')
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
 module.exports = router;
