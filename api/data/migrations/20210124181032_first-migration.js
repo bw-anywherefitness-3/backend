@@ -24,10 +24,27 @@ exports.up = async (knex) => {
       classes.integer('attendees', 100).notNullable()
       classes.integer('max_size', 100).notNullable()
     })
+    .createTable('class_users',(signup) => {
+      signup.integer('user_id')
+      .notNullable()
+      .unsigned()
+      .references('user_id')
+      .inTable('users')
+      .onUpdate('CASCADE')
+      .onDelete('CASCADE')
+      signup.integer('class_id')
+      .notNullable()
+      .unsigned()
+      .references('class_id')
+      .inTable('class')
+      .onUpdate('CASCADE')
+      .onDelete('CASCADE')
+    })
 }
   
 
 exports.down = async (knex) => {
+  await knex.schema.dropTableIfExists('class_users')
   await knex.schema.dropTableIfExists('class')
   await knex.schema.dropTableIfExists('users')
 }
