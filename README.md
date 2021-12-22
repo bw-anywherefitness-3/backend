@@ -8,7 +8,7 @@
 
 ### [POST] https://bw-anywherefitness-3.herokuapp.com/api/auth/register
 - Register a user with { first_name, last_name, email, password, role }
-- role must be either client or instructor
+- **role** must be either "client" or "instructor"
 - all fields are required
 
 ### [POST] https://bw-anywherefitness-3.herokuapp.com/api/auth/login
