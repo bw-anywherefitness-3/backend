@@ -1,17 +1,17 @@
 # Endpoints
 
-## [GET] https://bw-anywherefitness-3.herokuapp.com/api/classes
+### [GET] https://bw-anywherefitness-3.herokuapp.com/api/classes
 - Returns all classes
 
-## [GET] https://bw-anywherefitness-3.herokuapp.com/api/users
+### [GET] https://bw-anywherefitness-3.herokuapp.com/api/users
 - Returns all users
 
-## [POST] https://bw-anywherefitness-3.herokuapp.com/api/auth/register
+### [POST] https://bw-anywherefitness-3.herokuapp.com/api/auth/register
 - Register a user with { first_name, last_name, email, password, role }
 - role must be either client or instructor
 - all fields are required
 
-## [POST] https://bw-anywherefitness-3.herokuapp.com/api/auth/login
+### [POST] https://bw-anywherefitness-3.herokuapp.com/api/auth/login
 - Login using { email, password }
 
 # Build Week Scaffolding for Node and PostgreSQL
