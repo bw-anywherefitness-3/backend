@@ -3,6 +3,11 @@
 ### [GET] https://bw-anywherefitness-3.herokuapp.com/api/classes
 - Returns all classes
 
+### [POST] https://bw-anywherefitness-3.herokuapp.com/api/classes
+- Post a new class. Exammple: 
+- { "class_name": "Dance Class", "type": "dance", "date": "12/21/2021", "time": "3:00 pm", "duration": "60 min", "intensity_level": "easy",
+"location": "the gym", "attendees": 2, "max_size": 35 }
+
 ### [GET] https://bw-anywherefitness-3.herokuapp.com/api/classes/:id
 - getById : Returns info about a class by class_id
 
