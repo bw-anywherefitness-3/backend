@@ -8,6 +8,13 @@ function getById(id) {
     .where('class_id', id)
     .first()
 }
+
+function countAttendees(class_id) {
+const clients = db('class_users')
+.where('class_id', class_id)
+return clients
+}
+
 async function add(classes){
     const [newClass] = await db('class')
     .insert(classes, ['class_name', 'type','date', 'time', 'duration', 
@@ -25,6 +32,7 @@ async function update(class_id, changes){
 module.exports = {
     getAll,
     getById,
+    countAttendees,
     add,
     update
 }

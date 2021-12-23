@@ -25,6 +25,7 @@ exports.up = async (knex) => {
       classes.integer('max_size', 100).notNullable()
     })
     .createTable('class_users',(signup) => {
+      signup.increments('class_users_id')
       signup.integer('user_id')
         .notNullable()
         .unsigned()
@@ -36,7 +37,7 @@ exports.up = async (knex) => {
         .notNullable()
         .unsigned()
         .references('class_id')
-        .inTable('classes')
+        .inTable('class')
         .onUpdate('CASCADE')
         .onDelete('CASCADE')  
 
