@@ -3,6 +3,12 @@
 ### [GET] https://bw-anywherefitness-3.herokuapp.com/api/classes
 - Returns all classes
 
+### [GET] https://bw-anywherefitness-3.herokuapp.com/api/classes/:id
+- getById : Returns info about a class by class_id
+
+### [GET] https://bw-anywherefitness-3.herokuapp.com/api/classes/attendees/:class_id
+- Returns the number of attendees per class by class_id
+
 ### [GET] https://bw-anywherefitness-3.herokuapp.com/api/users
 - Returns all users
 
@@ -13,6 +19,9 @@
 
 ### [POST] https://bw-anywherefitness-3.herokuapp.com/api/auth/login
 - Login using { email, password }
+
+
+---------
 
 # Build Week Scaffolding for Node and PostgreSQL
 
