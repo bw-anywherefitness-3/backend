@@ -17,17 +17,24 @@ router.get('/:id', (req, res, next) => {
     })
     .catch(next)
 })
-router.post('/', only("instructor"), (req, res, next) => {
+router.post('/', restricted, only("instructor"), (req, res, next) => {
     Class.add(req.body)
     .then(newClass => {
         res.json(newClass)
     })
     .catch(next)
 })
-router.put('/:class_id', only,(req, res, next) => {
+
+router.get('/attendees/:class_id', (req, res, next) => {
+    Class.countAttendees(req.params.class_id)
+    .then(attendees => {
+        res.json(attendees.length)
+    })
+    .catch(next)
+})
+
+router.put('/:class_id', only("instructor") ,(req, res, next) => {
    const { id } = req.params
-   const { class_name, type, date, time, duration,
-     intenstity_level, location, attenddes, max_size} = req.body
      Class.getById(id)
      .then(addClass => {
          if(!addClass){
@@ -36,6 +43,7 @@ router.put('/:class_id', only,(req, res, next) => {
              return Class.update(id, req.body)
          }
      })
+     .catch(next)
 })
     
 module.exports = router
