@@ -36,5 +36,9 @@ exports.seed = async function (knex) {
       class_id: 1,
       user_id: 2,
     },
+    {
+      class_id: 1,
+      user_id: 2,
+    },
   ]);
 };
