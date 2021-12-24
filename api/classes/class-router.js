@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const Class = require('./class-model')
 
+const { restricted, only } = require("../auth/auth-middleware")
 
 router.get('/', (req, res, next) => {
     Class.getAll()
@@ -16,7 +17,7 @@ router.get('/:id', (req, res, next) => {
     })
     .catch(next)
 })
-router.post('/', (req, res, next) => {
+router.post('/', restricted, only("instructor"), (req, res, next) => {
     Class.add(req.body)
     .then(newClass => {
         res.json(newClass)
@@ -32,7 +33,7 @@ router.get('/attendees/:class_id', (req, res, next) => {
     .catch(next)
 })
 
-router.put('/:class_id', (req, res, next) => {
+router.put('/:class_id', restricted, only("instructor") ,(req, res, next) => {
    const { id } = req.params
      Class.getById(id)
      .then(addClass => {
