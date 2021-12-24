@@ -14,6 +14,9 @@
 ### [GET] https://bw-anywherefitness-3.herokuapp.com/api/classes/attendees/:class_id
 - Returns the number of attendees per class by class_id
 
+### [GET] https://bw-anywherefitness-3.herokuapp.com/api/classes/signedUp/:id
+- Returns users who are linked to class by class_id
+
 ### [GET] https://bw-anywherefitness-3.herokuapp.com/api/users
 - Returns all users
 
