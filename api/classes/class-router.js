@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const Class = require('./class-model')
 
+const { restricted, only } = require("../auth/auth-middleware")
 
 router.get('/', (req, res, next) => {
     Class.getAll()
@@ -24,7 +25,7 @@ router.get('/signedUp/:id', (req, res, next) => {
     })
     .catch(next({status: 404, message: 'Unable to get users!'}))
 })
-router.post('/', (req, res, next) => {
+router.post('/', restricted, only("instructor"), (req, res, next) => {
     Class.add(req.body)
     .then(newClass => {
         res.json(newClass)
@@ -40,15 +41,17 @@ router.get('/attendees/:class_id', (req, res, next) => {
     .catch(next)
 })
 
-router.put('/:class_id', async (req, res, next) => {
-   const classes = await Class.update(req.params.id, req.body)
-   res.json(classes)
-     try{
-         res.json('update class by id')
-     } catch (err){
-         next(err)
-     }
-    })
-//({status: 400, message: 'unable to update'})
-
+router.put('/:class_id', restricted, only("instructor") ,(req, res, next) => {
+   const { id } = req.params
+     Class.getById(id)
+     .then(addClass => {
+         if(!addClass){
+             res.status(404).json({message: "Class does not exist"})
+         } else {
+             return Class.update(id, req.body)
+         }
+     })
+     .catch(next)
+})
+    
 module.exports = router
